@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Tag",
@@ -28,11 +17,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <ClerkProvider appearance={{
+        variables: {
+        colorPrimary: "#0E78F9",
+
+        }
+}}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
-      >
-        {children}
-      </body>
+          className={`${inter.className} bg-dark-2 text-white antialiased`}
+        >
+          {children}
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
