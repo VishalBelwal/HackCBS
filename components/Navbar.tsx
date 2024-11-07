@@ -2,6 +2,15 @@
 import Link from "next/link";
 import React from "react";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 
 export const Navbar = () => {
 
@@ -10,7 +19,6 @@ export const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <p className="text-[25px] font-extrabold text-white ">Tag</p>
       </Link>
-
       {/* for mobile compatiblity */}
       <div className="flex-between gap-5">
         {/* clerk user management */}
